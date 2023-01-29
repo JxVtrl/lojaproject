@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loja online - {% block title %}{% endblock%}</title>
+  </head>
+  <body>
+    <a href="/">Home</a>
+    <a href="/sobre/">Sobre</a>
+    <a href="/contato/">Contato</a> {% block content%} {% endblock %}
+  </body>
+</html>
