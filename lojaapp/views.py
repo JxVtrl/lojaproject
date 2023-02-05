@@ -8,9 +8,22 @@ class HomeView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['produto_list'] = Produto.objects.all()
         return context
-    
+
+class TodosProdutosView(TemplateView):
+    template_name = "todosprodutos.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['todascategorias'] = Categoria.objects.all().order_by('-id')
+        return context    
+
+# class ProdutoDetalhesView(TemplateView):
+#     template_name = "produtodetalhe.html"
+ 
+
 class SobreView(TemplateView):
     template_name = "sobre.html"
 
 class ContatoView(TemplateView):
     template_name = "contato.html"
+
+    
