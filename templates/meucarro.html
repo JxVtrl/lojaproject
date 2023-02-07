@@ -26,17 +26,17 @@
             <td>{{ cp.sub_total }}</td>
             <td>
               <a
-                href="{% url 'lojaapp:manipularcarro' cp.id %} ?acao=inc"
+                href="{% url 'lojaapp:manipularcarro' cp.id %}?acao=inc"
                 class="btn btn-success"
-                >Adicionar</a
-              >
+                >Adicionar
+              </a>
               <a
-                href="{% url 'lojaapp:manipularcarro' cp.id %} ?acao=dcr"
+                href="{% url 'lojaapp:manipularcarro' cp.id %}?acao=dcr"
                 class="btn btn-warning"
                 >Retirar</a
               >
               <a
-                href="{% url 'lojaapp:manipularcarro' cp.id %} ?acao=rmv"
+                href="{% url 'lojaapp:manipularcarro' cp.id %}?acao=rmv"
                 class="btn btn-danger"
                 >deletar</a
               >

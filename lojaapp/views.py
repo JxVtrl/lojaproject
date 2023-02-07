@@ -33,7 +33,7 @@ class AddCarroView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        produto_id = kwargs['pro_id']
+        produto_id = self.kwargs['pro_id']
         produto_obj = Produto.objects.get(id=produto_id)
         carro_id = self.request.session.get("carro_id", None)
         if carro_id:
@@ -62,7 +62,7 @@ class AddCarroView(TemplateView):
 
 
 class ManipularCarroView(View):
-    def get(self,request, *args,  **kwargs):
+    def get(self, request, *args,  **kwargs):
         cp_id = self.kwargs["cp_id"]
         acao = request.GET.get("acao")
         cp_obj = CarroProduto.objects.get(id=cp_id)
