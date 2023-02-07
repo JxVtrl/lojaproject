@@ -75,9 +75,15 @@ class ManipularCarroView(View):
             carro_obj.total += cp_obj.avaliacao_produto
             carro_obj.save()
         elif acao == "dcr":
-            pass
+            cp_obj.quantidade -= 1
+            cp_obj.sub_total -= cp_obj.avaliacao_produto
+            cp_obj.save()
+            carro_obj.total -= cp_obj.avaliacao_produto
+            carro_obj.save()
         elif acao == "rmv":
-            pass
+            carro_obj.total -= cp_obj.sub_total
+            carro_obj.save()
+            cp_obj.delete()
         else:
             pass
         return redirect("lojaapp:meucarro")

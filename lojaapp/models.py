@@ -11,7 +11,7 @@ class Cliente(models.Model):
     def __str__(self):
         return self.nome_completo
 
-
+# Creating class Categoria
 class Categoria(models.Model):
     titulo = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, max_length=100)
@@ -19,6 +19,7 @@ class Categoria(models.Model):
     def __str__(self):
         return self.titulo
 
+# Creating class Produto
 class Produto(models.Model):
     titulo = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, max_length=100)
@@ -34,6 +35,7 @@ class Produto(models.Model):
     def __str__(self):
         return self.titulo
 
+# Creating class Carro
 class Carro(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.SET_NULL, null=True, blank=True)
     total = models.PositiveIntegerField(default=0)
@@ -42,6 +44,7 @@ class Carro(models.Model):
     def __str__(self):
         return "Carro" + str(self.id)
 
+# Creating class CarroProduto
 class CarroProduto(models.Model):
     carro = models.ForeignKey(Carro, on_delete=models.CASCADE)
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
