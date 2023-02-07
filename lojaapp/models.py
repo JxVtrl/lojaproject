@@ -67,7 +67,7 @@ class Pedido_order(models.Model):
     telefone = models.CharField(max_length=20)
     email = models.EmailField(null=True, blank=True)
     endereco_envio = models.CharField(max_length=200)
-    subtotal = models.PositiveIntegerField
+    sub_total = models.PositiveIntegerField
     desconto = models.PositiveIntegerField()
     total = models.PositiveIntegerField()
     pedido_status = models.CharField(max_length=50, choices=PEDIDO_STATUS)

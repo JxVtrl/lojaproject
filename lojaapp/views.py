@@ -38,9 +38,28 @@ class AddCarroView(TemplateView):
         carro_id = self.request.session.get("carro_id", None)
         if carro_id:
             carro_obj = Carro.objects.get(id=carro_id)
+            produto_no_carro = carro_obj.carroproduto_set.filter(produto=produto_obj)
+            if produto_no_carro.exists():
+                carroproduto = produto_no_carro.last()
+                carroproduto.quantidade += 1
+                carroproduto.sub_total += produto_obj.venda
+                carroproduto.save()
+                carro_obj.total += produto_obj.venda
+                carro_obj.save()
+
+            else:
+                carroproduto = CarroProduto.objects.create(carro=carro_obj, produto=produto_obj, avaliacao_produto=produto_obj.venda, quantidade=1, sub_total=produto_obj.venda)
+                carro_obj.total += produto_obj.venda
+                carro_obj.save()
+        
         else:
             carro_obj = Carro.objects.create(total=0)
             self.request.session['carro_id'] = carro_obj.id
+            carroproduto = CarroProduto.objects.create(carro=carro_obj, produto=produto_obj, avaliacao_produto=produto_obj.venda, quantidade=1, sub_total=produto_obj.venda)
+            carro_obj.total += produto_obj.venda
+            carro_obj.save()
+        return context
+
 
 class SobreView(TemplateView):
     template_name = "sobre.html"
