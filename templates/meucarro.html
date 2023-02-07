@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% block content%}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h4>Itens do carrinho</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Codigo</th>
+            <th>Produto</th>
+            <th>Avaliacao</th>
+            <th>Quantidade</th>
+            <th>Subtotal</th>
+            <th>Acao</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for cp in carro.carroproduto_set.all %}
+
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ cp.produto.titulo }}</td>
+            <td>{{ cp.avaliacao_produto }}</td>
+            <td>{{ cp.quantidade}}</td>
+            <td>{{ cp.sub_total }}</td>
+            <td>
+              <a href="" class="btn btn-success">Adicionar</a>
+              <a href="" class="btn btn-warning">Retirar</a>
+              <a href="" class="btn btn-danger">deletar</a>
+            </td>
+          </tr>
+          {% endfor %}
+          <tr>
+            <th colspan="5" class="text-right">Valor total</th>
+            <th>$ . {{carro.total}}</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

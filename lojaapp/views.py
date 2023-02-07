@@ -61,10 +61,22 @@ class AddCarroView(TemplateView):
         return context
 
 
+class MeuCarroView(TemplateView):
+    template_name = "meucarro.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        carro_id = self.request.session.get("carro_id", None)
+        if carro_id:
+            carro = Carro.objects.get(id=carro_id)
+        else:
+            carro = None
+        context['carro'] = carro
+        return context
+
 class SobreView(TemplateView):
     template_name = "sobre.html"
 
 class ContatoView(TemplateView):
     template_name = "contato.html"
 
-    
