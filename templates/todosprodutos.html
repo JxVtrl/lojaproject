@@ -11,7 +11,9 @@
     {% for p in cat.produto_set.all %}
     <div class="col-md-4">
       <div class="m-4">
-        <h4 class="text-center">{{p.titulo}}</h4>
+        <h4 class="text-left">
+          <a href="{% url 'lojaapp:produtodetalhe' p.slug %}">{{p.titulo}} </a>
+        </h4>
         <img
           src="{{p.imagem.url}}"
           class="img-fluid"
