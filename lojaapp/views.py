@@ -80,6 +80,10 @@ class ManipularCarroView(View):
             cp_obj.save()
             carro_obj.total -= cp_obj.avaliacao_produto
             carro_obj.save()
+
+            if cp_obj.quantidade == 0:
+                cp_obj.delete()
+
         elif acao == "rmv":
             carro_obj.total -= cp_obj.sub_total
             carro_obj.save()
@@ -88,6 +92,16 @@ class ManipularCarroView(View):
             pass
         return redirect("lojaapp:meucarro")
 
+
+class LimparCarroView(View):
+    def get(self, request, *args, **kwargs):
+        carro_id = request.session.get("carro_id", None)
+        if carro_id:
+            carro = Carro.objects.get(id=carro_id)
+            carro.carroproduto_set.all().delete()
+            carro.total = 0
+            carro.save()
+        return redirect("lojaapp:meucarro")
 
 
 class MeuCarroView(TemplateView):

@@ -11,4 +11,5 @@ urlpatterns = [
     path("addcarro-<int:pro_id>/", AddCarroView.as_view(), name="addcarro"),
     path("meu-carro/", MeuCarroView.as_view(), name="meucarro"),
     path("manipular-carro/<int:cp_id>/", ManipularCarroView.as_view(), name="manipularcarro"),
+    path("limpar-carro/", LimparCarroView.as_view(), name="limparcarro"),
 ]

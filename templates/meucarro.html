@@ -46,8 +46,18 @@
           <tr>
             <th colspan="5" class="text-right">Valor total</th>
             <th>${{carro.total}}</th>
+            <tr>
+              <th>
+                <a
+                href="{% url 'lojaapp:limparcarro' cp.id %}?acao=rmv"
+                class="btn btn-warning"
+                >Limpar carrinho
+              </a>
+              </th>
+            </tr>
           </tr>
         </tbody>
+        
       </table>
     </div>
   </div>
