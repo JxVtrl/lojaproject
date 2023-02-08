@@ -3,9 +3,9 @@
   <div class="row mt-3">
     {% for p in produto_list %}
     <div class="col-md-4">
-      <div class="m-4 col-md-4">
+      <div class=" shadow p-3 mb-5 bg-body-tertiary rounded w-100 p-5 m-4 col-md-4">
         <h4 class="text-left">
-          <a href="{% url 'lojaapp:produtodetalhe' p.slug %}">{{p.titulo}} </a>
+          <a href="{% url 'lojaapp:produtodetalhe' p.slug %}" class="text-black" style="text-decoration: none">{{p.titulo}} </a>
         </h4>
         <img
           style="height: 200px; object-fit: cover"
