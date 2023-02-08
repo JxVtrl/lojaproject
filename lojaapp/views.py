@@ -106,7 +106,3 @@ class MeuCarroView(TemplateView):
             carro = None
         context['carro'] = carro
         return context
-
-class SobreView(TemplateView):
-    template_name = "sobre.html"
-
