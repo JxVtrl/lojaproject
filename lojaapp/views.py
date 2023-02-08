@@ -10,7 +10,7 @@ class HomeView(TemplateView):
         return context
 
 class TodosProdutosView(TemplateView):
-    template_name = "todosprodutos.html"
+    template_name = "allproducts.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['todascategorias'] = Categoria.objects.all().order_by('-id')
@@ -29,7 +29,7 @@ class ProdutoDetalheView(TemplateView):
         return context
 
 class AddCarroView(TemplateView):
-    template_name = "addprocarro.html"
+    template_name = "productAdded.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -80,6 +80,10 @@ class ManipularCarroView(View):
             cp_obj.save()
             carro_obj.total -= cp_obj.avaliacao_produto
             carro_obj.save()
+
+            if cp_obj.quantidade == 0:
+                cp_obj.delete()
+                
         elif acao == "rmv":
             carro_obj.total -= cp_obj.sub_total
             carro_obj.save()
@@ -105,7 +109,4 @@ class MeuCarroView(TemplateView):
 
 class SobreView(TemplateView):
     template_name = "sobre.html"
-
-class ContatoView(TemplateView):
-    template_name = "contato.html"
 
