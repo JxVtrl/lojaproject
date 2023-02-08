@@ -32,11 +32,11 @@
           </td>
           <td>{{ cp.produto.titulo }}</td>
           <td>{{ cp.quantidade}}</td>
-          <td>{{ cp.sub_total }}</td>
+          <td>R$ {{ cp.sub_total }},00</td>
         </tr>
         {% endfor %}
         <tr>
-          <th colspan="5" class="text-right">Valor total: ${{carro.total}}</th>
+          <th colspan="5" class="text-center">Total: R$ {{carro.total}},00</th>
         </tr>
       </tbody>
     </table>
