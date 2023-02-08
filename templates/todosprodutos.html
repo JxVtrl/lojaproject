@@ -1,39 +1,37 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="container">
-  <h1 class="text-center">TODOS OS PRODUTOS</h1>
+  <h1 class="text-center">Produtos por categoria</h1>
 
   {% for cat in todascategorias %}
+    <h1 class="mt-5">{{cat.titulo}}</h1>
 
-  <h1 class="mt-5">{{cat.titulo}}</h1>
-
-  <div class="row mt-3">
-    {% for p in cat.produto_set.all %}
-    <div
-      class="col-md-4 shadow p-3 mb-5 bg-body-tertiary rounded p-5 m-4"
-    >
-      <div class="m-4">
-        <h4 class="text-left">
-          <a
-            href="{% url 'lojaapp:produtodetalhe' p.slug %}"
-            style="text-decoration: none"
-            class="text-black"
-            >{{p.titulo}}
-          </a>
-        </h4>
-        <img
-          src="{{p.imagem.url}}"
-          class="img-fluid"
-          alt=""
-          style="height: 150px; object-fit: cover"
-        />
-        <p class="mt-3">De: <strike>R$ {{p.preco_mercado}}</strike></p>
-        <p class="mt-3">Por: R$ {{p.venda}}</p>
-        <a href="#" class="btn btn-success">Comprar</a>
+    <div class="row mt-3">
+      {% for p in cat.produto_set.all %}
+      <div
+        class="col-md-auto shadow p-5 bg-body-tertiary rounded m-5"
+      >
+        <div>
+          <h4 class="text-center">
+            <a
+              href="{% url 'lojaapp:produtodetalhe' p.slug %}"
+              style="text-decoration: none"
+              class="text-black"
+              >{{p.titulo}}
+            </a>
+          </h4>
+          <img
+            src="{{p.imagem.url}}"
+            class="img-fluid"
+            alt=""
+            style="height: 150px; object-fit: cover"
+          />
+          <p class="mt-3">Por: R$ {{p.venda}}</p>
+          <a href="#" class="btn btn-success">Comprar</a>
+        </div>
       </div>
+      {% endfor%}
     </div>
-    {% endfor%}
-  </div>
   {% endfor%}
 </div>
 {% endblock%}

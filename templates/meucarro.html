@@ -7,45 +7,36 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Codigo</th>
-            <th>Produto</th>
-            <th>Avaliacao</th>
-            <th>Quantidade</th>
-            <th>Subtotal</th>
             <th>Acao</th>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Qtd</th>
+            <th>Total</th>
           </tr>
         </thead>
         <tbody>
           {% for cp in carro.carroproduto_set.all %}
-
           <tr>
-            <td>{{ forloop.counter }}</td>
-            <td>{{ cp.produto.titulo }}</td>
-            <td>{{ cp.avaliacao_produto }}</td>
-            <td>{{ cp.quantidade}}</td>
-            <td>{{ cp.sub_total }}</td>
             <td>
               <a
                 href="{% url 'lojaapp:manipularcarro' cp.id %}?acao=inc"
                 class="btn btn-success"
-                >Adicionar
+                >+
               </a>
               <a
                 href="{% url 'lojaapp:manipularcarro' cp.id %}?acao=dcr"
-                class="btn btn-warning"
-                >Retirar</a
-              >
-              <a
-                href="{% url 'lojaapp:manipularcarro' cp.id %}?acao=rmv"
                 class="btn btn-danger"
-                >deletar</a
+                >-</a
               >
             </td>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ cp.produto.titulo }}</td>
+            <td>{{ cp.quantidade}}</td>
+            <td>{{ cp.sub_total }}</td>
           </tr>
           {% endfor %}
           <tr>
-            <th colspan="5" class="text-right">Valor total</th>
-            <th>${{carro.total}}</th>
+            <th colspan="5" class="text-right">Valor total: ${{carro.total}}</th>
           </tr>
         </tbody>
       </table>

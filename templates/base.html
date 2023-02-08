@@ -22,22 +22,27 @@
     <div
       class="d-flex flex-row align-items-center justify-content-around bg-black p-3"
     >
-      <h1 class="text-light text-monospace fs-1 fw-bold">CELLSHOP</h1>
-      <div class="input-group w-auto d-flex justify-content-center bg-primary">
-        <input type="text" class="form-control " id="validationCustomUsername" placeholder="Pesquise seus produtos" aria-describedby="inputGroupPrepend" required>
+      <a href="{% url 'lojaapp:home' %}" class="text-white">
+        <h1 class="text-light text-monospace fs-1 fw-bold">Apple</h1>
+      </a>
+
+      <div class="gap-4 d-flex ">
+        <a href="{% url 'lojaapp:todosprodutos' %}" class="text-white">Categorias</a>
+        <a href="{% url 'lojaapp:sobre' %}" class="text-white">Sobre</a>
       </div>
+
+
+      <a href="{% url 'lojaapp:meucarro' %}" class="text-white bg-light">
+        <i class="fas fa-shopping-cart">a</i>
+      </a>
       
-      </div>
     </div>
-    <div class="w-100% bg-secondary gap-4 p-3 d-flex justify-content-center">
-      <a href="{% url 'lojaapp:home' %}" class="text-white">Home</a>
-      <a href="{% url 'lojaapp:sobre' %}" class="text-white">Sobre</a>
-      <a href="{% url 'lojaapp:contato' %}" class="text-white">Contato</a>
-      <a href="{% url 'lojaapp:todosprodutos' %}" class="text-white">Categorias</a>
-      <a href="{% url 'lojaapp:meucarro' %}" class="text-white">Carrinho</a>
+
+    <div class="input-group w-auto d-flex justify-content-center">
+      <input type="text" class="form-control " id="validationCustomUsername" placeholder="Pesquisar" aria-describedby="inputGroupPrepend" required>
     </div>
+  
     {% block content%} {% endblock %}
 
   </body>
-
 </html>

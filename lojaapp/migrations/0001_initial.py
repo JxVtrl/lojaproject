@@ -37,7 +37,6 @@ class Migration(migrations.Migration):
                 ('titulo', models.CharField(max_length=100)),
                 ('slug', models.SlugField(max_length=100, unique=True)),
                 ('imagem', models.ImageField(upload_to='produtos')),
-                ('preco_mercado', models.PositiveIntegerField()),
                 ('venda', models.PositiveIntegerField()),
                 ('descricao', models.TextField()),
                 ('garantia', models.CharField(blank=True, max_length=100, null=True)),
@@ -75,7 +74,6 @@ class Migration(migrations.Migration):
             name='CarroProduto',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('avaliacao_produto', models.PositiveIntegerField()),
                 ('quantidade', models.PositiveIntegerField()),
                 ('sub_total', models.PositiveIntegerField()),
                 ('carro', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='lojaapp.carro')),
