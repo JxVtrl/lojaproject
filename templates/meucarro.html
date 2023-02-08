@@ -1,46 +1,45 @@
 {% extends 'base.html' %} {% block content%}
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <h4>Itens do carrinho</h4>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Acao</th>
-            <th>Código</th>
-            <th>Nome</th>
-            <th>Qtd</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for cp in carro.carroproduto_set.all %}
-          <tr>
-            <td>
-              <a
-                href="{% url 'lojaapp:manipularcarro' cp.id %}?acao=inc"
-                class="btn btn-success"
-                >+
-              </a>
-              <a
-                href="{% url 'lojaapp:manipularcarro' cp.id %}?acao=dcr"
-                class="btn btn-danger"
-                >-</a
-              >
-            </td>
-            <td>{{ forloop.counter }}</td>
-            <td>{{ cp.produto.titulo }}</td>
-            <td>{{ cp.quantidade}}</td>
-            <td>{{ cp.sub_total }}</td>
-          </tr>
-          {% endfor %}
-          <tr>
-            <th colspan="5" class="text-right">Valor total: ${{carro.total}}</th>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class=" w-100">
+    <h4>Seu carrinho</h4>
+    <table class="table" style="text-align: center;">
+      <thead>
+        <tr>
+          <th class="text-center">Incrementar</th>
+          <th class="text-center">Decrementar</th>
+          <th class="text-center">Nome</th>
+          <th class="text-center">Qtd</th>
+          <th class="text-center">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for cp in carro.carroproduto_set.all %}
+        <tr>
+          <td>
+            <a
+              href="{% url 'lojaapp:manipularcarro' cp.id %}?acao=inc"
+              class="btn btn-success"
+              >+
+            </a>
+          </td>
+          <td>
+            <a
+              href="{% url 'lojaapp:manipularcarro' cp.id %}?acao=dcr"
+              class="btn btn-danger"
+              >-</a
+            >
+          </td>
+          <td>{{ cp.produto.titulo }}</td>
+          <td>{{ cp.quantidade}}</td>
+          <td>{{ cp.sub_total }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+          <th colspan="5" class="text-right">Valor total: ${{carro.total}}</th>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
