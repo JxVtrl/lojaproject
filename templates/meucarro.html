@@ -47,14 +47,26 @@
             <th colspan="5" class="text-right">Valor total</th>
             <th>${{carro.total}}</th>
             <tr>
+              {% if carro.carroproduto_set.all %}
               <th>
                 <a
                 href="{% url 'lojaapp:limparcarro' %}?acao=rmv"
                 class="btn btn-warning"
                 >Limpar carrinho
               </a>
+              {% endif %}
               </th>
             </tr>
+          </tr>
+          <tr>
+            {% if carro.carroproduto_set.all %}
+              <th>
+                <a
+                href="{% url 'lojaapp:checkout' %}"
+                class="btn btn-warning"
+                >Processar Compra
+              </a>
+              {% endif %}
           </tr>
         </tbody>
         
