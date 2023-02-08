@@ -1,8 +1,13 @@
 {% extends 'base.html' %} {% block content %}
-<div class="container">
+<div class="container p-3">
   <div class="row">
     <div class="col-md-6">
-      <h3>itens do carrinho</h3>
+      <h3>Itens do carrinho</h3>
+      <a
+        href="{% url 'lojaapp:meucarro' %}?acao=rmv"
+        class="btn btn-dark text-white"
+        >Atualizar carrinho
+      </a>
       <table class="table">
         <thead>
           <tr>
@@ -26,6 +31,10 @@
           </tr>
           {% endfor %}
         </tbody>
+        <tr>
+          <th colspan="5" class="text-right">Valor total</th>
+          <th>R$ {{carro.total}}</th>
+        </tr>
       </table>
     </div>
     <div class="col-md-6">

@@ -48,7 +48,7 @@
             <th>${{carro.total}}</th>
             <tr>
               {% if carro.carroproduto_set.all %}
-              <th>
+              <th >
                 <a
                 href="{% url 'lojaapp:limparcarro' %}?acao=rmv"
                 class="btn btn-warning"
@@ -63,7 +63,7 @@
               <th>
                 <a
                 href="{% url 'lojaapp:checkout' %}"
-                class="btn btn-warning"
+                class="btn btn-primary"
                 >Processar Compra
               </a>
               {% endif %}

@@ -100,10 +100,10 @@ class CheckoutView(TemplateView):
         context = super().get_context_data(**kwargs)
         carro_id = self.request.session.get("carro_id", None)
         if carro_id:
-            carro = Carro.objects.get(id=carro_id)
+            carro_obj = Carro.objects.get(id=carro_id)
         else:
-            carro = None
-        context['carro'] = carro
+            carro_obj = None
+        context['carro'] = carro_obj
         return context
 
 
